@@ -38,7 +38,9 @@ if __name__ == '__main__':
                 a4paper,
                 total={170mm,257mm},
                 left=20mm,
+                right=20mm,
                 top=20mm,
+                bottom=20mm
             }
 
         \usepackage{multicol}
@@ -46,10 +48,8 @@ if __name__ == '__main__':
         \setlength\parindent{0pt}
 
         \begin{document}
+             \pagenumbering{gobble}
             Name: $\rule{10cm}{0.15mm}$ \\
-            \fontsize{0.2cm}{0.2cm}\selectfont'''
-    latex += f'(worksheet id: {id})' + r'\\'
-    latex +=r'''
             \begin{multicols}{3}
             \fontsize{0.3cm}{0.7cm}\selectfont'''+'\n'
     for question_number in range(1,100+1):
@@ -58,10 +58,17 @@ if __name__ == '__main__':
         b = random.randint(0, 10)
 
         latex += f'\t\t\t{question_number}) ${a} + {b} = $' + r'$\rule{1cm}{0.15mm}$ \\'+'\n'
+
+
     latex += r'''
-
-
+            $ 1 + 2 = $ \\
+            $3 $ \\
+            $ 1 + 2 =  = 3$ \\
             \end{multicols}
+            \fontsize{0.1cm}{0.1cm}\selectfont
+    '''
+    latex += r'\vfill \hfill' + f'(worksheet id: {id})' + r'\\'
+    latex += r'''
         \end{document}
     '''
 
